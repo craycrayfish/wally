@@ -72,20 +72,16 @@ dependencies = [
     "packaging>=24.2",
     "pynput>=1.7.7",
     "pyserial>=3.5",
-    "wandb>=0.20.0",
-
-    "torch>=2.2.1,<2.8.0", # TODO: Bumb dependency
-    "torchcodec>=0.2.1,<0.6.0; sys_platform != 'win32' and (sys_platform != 'linux' or (platform_machine != 'aarch64' and platform_machine != 'arm64' and platform_machine != 'armv7l')) and (sys_platform != 'darwin' or platform_machine != 'x86_64')", # TODO: Bumb dependency
-    "torchvision>=0.21.0,<0.23.0", # TODO: Bumb dependency
-
-    "draccus==0.10.0", # TODO: Remove ==
-    "gymnasium>=0.29.1,<1.0.0", # TODO: Bumb dependency
-    "rerun-sdk>=0.21.0,<0.23.0", # TODO: Bumb dependency
-
-    # Support dependencies
-    "deepdiff>=7.0.1,<9.0.0",
-    "imageio[ffmpeg]>=2.34.0,<3.0.0",
-    "termcolor>=2.4.0,<4.0.0",
+    "pyzmq>=26.2.1",
+    "rerun-sdk>=0.21.0",
+    "scipy>=1.14.0",
+    "termcolor>=2.4.0",
+    "torch>=2.2.1",
+    "torchcodec>=0.2.1; sys_platform != 'win32' and (sys_platform != 'linux' or (platform_machine != 'aarch64' and platform_machine != 'arm64' and platform_machine != 'armv7l')) and (sys_platform != 'darwin' or platform_machine != 'x86_64')",
+    "torchvision>=0.21.0",
+    "wandb>=0.16.3",
+    "zarr>=2.17.0",
+    "matplotlib>=3.10.1",
 ]
 
 # Optional dependencies
