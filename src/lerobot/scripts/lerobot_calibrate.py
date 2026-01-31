@@ -15,13 +15,35 @@
 """
 Helper to recalibrate your device (robot or teleoperator).
 
+left_leader = /dev/tty.usbmodem5A7A0187661
+
+left_arm = /dev/tty.usbmodem5AB01580631
+
 Example:
 
 ```shell
 lerobot-calibrate \
-    --teleop.type=so100_leader \
-    --teleop.port=/dev/tty.usbmodem58760431551 \
-    --teleop.id=blue
+    --teleop.type=so101_leader \
+    --teleop.port=/dev/tty.usbmodem5A7A0187661 \
+    --teleop.id=left_leader
+
+lerobot-calibrate \
+    --teleop.type=so101_follower \
+    --teleop.port=/dev/tty.usbmodem5AB01580631 \
+    --teleop.id=left_arm
+
+python -m lerobot.calibrate \
+    --robot.type=so100_follower \
+    --robot.port=/dev/tty.usbmodem58FA1024931 \
+    --robot.id=white
+    ```
+
+Jenn's arms:
+```shell
+python -m lerobot.calibrate \
+    --robot.type=so101_follower \
+    --robot.port=/dev/tty.usbmodem5A4B0466901 \
+    --robot.id=jenn_white
 ```
 """
 

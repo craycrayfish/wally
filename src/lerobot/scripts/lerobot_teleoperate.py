@@ -15,17 +15,22 @@
 """
 Simple script to control a robot from teleoperation.
 
+left_leader = /dev/tty.usbmodem5A7A0187661
+right_leader = /dev/tty.usbmodem5A7A0185711
+left_arm = /dev/tty.usbmodem5AB01580631
+right_arm= /dev/tty.usbmodem5AB01576271
+
 Example:
 
 ```shell
 lerobot-teleoperate \
     --robot.type=so101_follower \
-    --robot.port=/dev/tty.usbmodem58760431541 \
+    --robot.port=/dev/tty.usbmodem5AB01580631 \
     --robot.cameras="{ front: {type: opencv, index_or_path: 0, width: 1920, height: 1080, fps: 30}}" \
-    --robot.id=black \
+    --robot.id=left_arm \
     --teleop.type=so101_leader \
-    --teleop.port=/dev/tty.usbmodem58760431551 \
-    --teleop.id=blue \
+    --teleop.port=/dev/tty.usbmodem5A7A0185711 \
+    --teleop.id=right_leader \
     --display_data=true
 ```
 
@@ -33,18 +38,18 @@ Example teleoperation with bimanual so100:
 
 ```shell
 lerobot-teleoperate \
-  --robot.type=bi_so100_follower \
-  --robot.left_arm_port=/dev/tty.usbmodem5A460851411 \
-  --robot.right_arm_port=/dev/tty.usbmodem5A460812391 \
+  --robot.type=bi_so101_follower \
+  --robot.left_arm_port=/dev/tty.usbmodem5AB01580631 \
+  --robot.right_arm_port=/dev/tty.usbmodem5AB01576271 \
   --robot.id=bimanual_follower \
   --robot.cameras='{
-    left: {"type": "opencv", "index_or_path": 0, "width": 1920, "height": 1080, "fps": 30},
-    top: {"type": "opencv", "index_or_path": 1, "width": 1920, "height": 1080, "fps": 30},
-    right: {"type": "opencv", "index_or_path": 2, "width": 1920, "height": 1080, "fps": 30}
+    left: {"type": "opencv", "index_or_path": 2, "width": 1920, "height": 1080, "fps": 30},
+    top: {"type": "opencv", "index_or_path": 0, "width": 1920, "height": 1080, "fps": 30},
+    right: {"type": "opencv", "index_or_path": 1, "width": 1920, "height": 1080, "fps": 30}
   }' \
-  --teleop.type=bi_so100_leader \
-  --teleop.left_arm_port=/dev/tty.usbmodem5A460828611 \
-  --teleop.right_arm_port=/dev/tty.usbmodem5A460826981 \
+  --teleop.type=bi_so101_leader \
+  --teleop.left_arm_port=/dev/tty.usbmodem5A7A0187661 \
+  --teleop.right_arm_port=/dev/tty.usbmodem5A7A0185711 \
   --teleop.id=bimanual_leader \
   --display_data=true
 ```
@@ -71,6 +76,7 @@ from lerobot.robots import (  # noqa: F401
     Robot,
     RobotConfig,
     bi_so100_follower,
+    bi_so101_follower,
     hope_jr,
     koch_follower,
     make_robot_from_config,
@@ -81,6 +87,7 @@ from lerobot.teleoperators import (  # noqa: F401
     Teleoperator,
     TeleoperatorConfig,
     bi_so100_leader,
+    bi_so101_leader,
     gamepad,
     homunculus,
     koch_leader,
